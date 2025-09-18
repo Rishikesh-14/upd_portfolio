@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rishikesh R | Network Engineer & Digital Creator</title>
+    <meta name="description" content="Portfolio of Rishikesh R - Network Engineer with UI/UX and Graphic Design skills">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        /* Light Theme Variables */
+        :root {
+            --mainTextColor-light: #222;
+            --secondaryTextColor-light: #444;
+            --mainLinkColor-light: #007bff;
+            --mainLinkHover-light: #0056b3;
+            --mainBorderColor-light: #e1e4e8;
+            --mainBgColor-light: #f8f9fa;
+            --cardBg-light: #ffffff;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --accent-light: #4361ee;
+            --gradient-light: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        }
+
+        /* Dark Theme Variables */
+        [data-theme="dark"] {
+            --mainTextColor: #f0f6fc;
+            --secondaryTextColor: #c9d1d9;
+            --mainLinkColor: #58a6ff;
+            --mainLinkHover: #388bfd;
+            --mainBorderColor: #30363d;
+            --mainBgColor: #0d1117;
+            --cardBg: #161b22;
+            --shadow: rgba(0, 0, 0, 0.4);
+            --accent: #ff7b72;
+            --gradient: linear-gradient(135deg, #ff7b72 0%, #d6409f 100%);
+        }
+
+        /* Apply Light Theme Styles */
+        [data-theme="light"] {
+            --mainTextColor: var(--mainTextColor-light);
+            --secondaryTextColor: var(--secondaryTextColor-light);
+            --mainLinkColor: var(--mainLinkColor-light);
+            --mainLinkHover: var(--mainLinkHover-light);
+            --mainBorderColor: var(--mainBorderColor-light);
+            --mainBgColor: var(--mainBgColor-light);
+            --cardBg: var(--cardBg-light);
+            --shadow: var(--shadow-light);
+            --accent: var(--accent-light);
+            --gradient: var(--gradient-light);
+        }
+
+        /* General Styles */
+        * {
+            font-family: 'Inter', 'Readex Pro', sans-serif;
+            line-height: 1.6em;
+            box-sizing: border-box;
+            color: var(--mainTextColor);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        body {
+            background-color: var(--mainBgColor);
+            margin: 0;
+            padding: 0;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(120, 119, 198, 0.03) 0%, rgba(120, 119, 198, 0) 25%),
+                radial-gradient(circle at 85% 30%, rgba(61, 193, 211, 0.03) 0%, rgba(61, 193, 211, 0) 25%);
+            background-attachment: fixed;
+        }
+
+        /* Typography */
+        p, span, li {
+            color: var(--secondaryTextColor);
+            font-size: 1.05em;
+        }
+
+        h1, h2, h3, h4 {
+            margin: 0.5em 0;
+            font-weight: 700;
+        }
+
+        h2 {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        /* Links */
+        a {
+            text-decoration: none;
+            color: var(--mainLinkColor);
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--mainLinkHover);
+            transform: translateY(-2px);
+        }
+
+        /* Layout */
+        #container--main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5em;
+        }
+
+        /* Section Styling */
+        .section--page {
+            padding: 2em 0;
+            border-bottom: 1px solid var(--mainBorderColor);
+        }
+
+        /* Profile */
+        #wrapper--hero {
+            display: flex;
+            align-items: center;
+            gap: 2.5em;
+            padding-bottom: 2em;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        .profile-decoration {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 150px;
+            height: 150px;
+            background: var(--gradient);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        #profile-pic {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            background: var(--gradient) border-box;
+                linear-gradient(#fff 0 0) padding-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            box-shadow: 0 8px 24px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        #profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        #user-name {
+            font-size: 2.5em;
+            margin-bottom: 0.25em;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+
+        #email {
+            margin-top: 1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background-color: var(--cardBg);
+            border-radius: 50px;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        /* Social Links */
+        #socials--list {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 1.5em 0;
+        }
+
+        #socials--list a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            color: var(--secondaryTextColor);
+            font-size: 1em;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: var(--cardBg);
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        #socials--list a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px var(--shadow);
+        }
+
+        /* Tech Stack */
+        #wrapper--techstack__items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 1.5em 0;
+        }
+
+        .card--techstack {
+            background: var(--cardBg);
+            box-shadow: 0 4px 12px var(--shadow);
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid var(--mainBorderColor);
+            transition: all 0.3s ease;
+        }
+
+        .card--techstack:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px var(--shadow);
+            border-color: var(--mainLinkColor);
+        }
+
+        /* Project Showcase */
+        .project-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .project-slide {
+            background: var(--cardBg);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: left;
+            box-shadow: 0 8px 24px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--mainBorderColor);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient);
+        }
+
+        .project-slide:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px var(--shadow);
+        }
+
+        .project-title {
+            color: var(--mainLinkColor);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .project-features {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .project-features li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .project-features li::before {
+            content: '•';
+            color: var(--mainLinkColor);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            color: white;
+            background: var(--gradient);
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            margin: 10px 10px 10px 0;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px var(--shadow);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px var(--shadow);
+            color: white;
+        }
+
+        /* Skills & Qualifications */
+        .skills-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills-list li {
+            background: var(--cardBg);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: transform 0.3s ease;
+            border-left: 4px solid transparent;
+            background-image: linear-gradient(to right, var(--cardBg), var(--cardBg)), 
+                              var(--gradient);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+
+        .skills-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .skills-list li::before {
+            content: '✓';
+            color: var(--mainLinkColor);
+            font-weight: bold;
+        }
+
+        /* Education */
+        .education-card {
+            background: var(--cardBg);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 8px 24px var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--mainBorderColor);
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .education-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--mainLinkColor);
+            font-size: 1.3em;
+        }
+
+        /* Contact */
+        .contact-info {
+            background: var(--cardBg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px var(--shadow);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            border: 1px solid var(--mainBorderColor);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* Theme Switcher */
+        #theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            background: var(--cardBg);
+            padding: 8px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px var(--shadow);
+            z-index: 100;
+        }
+
+        .theme {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid var(--mainBorderColor);
+            transition: transform 0.3s ease;
+        }
+
+        .theme:hover {
+            transform: scale(1.1);
+        }
+
+        #theme-light {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        #theme-dark {
+            background: linear-gradient(135deg, #131415 0%, #0a0c0d 100%);
+        }
+
+        /* Copyright */
+        .copyright {
+            text-align: center;
+            padding: 30px 0 15px;
+            color: var(--secondaryTextColor);
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        /* Visual Elements */
+        .graphic-element {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .circle-element {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--gradient);
+            top: 10%;
+            right: 5%;
+        }
+
+        .square-element {
+            width: 150px;
+            height: 150px;
+            background: var(--gradient);
+            bottom: 15%;
+            left: 5%;
+            transform: rotate(45deg);
+        }
+
+        /* Figma Embed Styling */
+        .figma-embed {
+            width: 100%;
+            height: 450px;
+            border: 1px solid var(--mainBorderColor);
+            border-radius: 12px;
+            margin: 20px 0;
+            overflow: hidden;
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+
+        /* Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 768px) {
+            #container--main {
+                padding: 1em;
+            }
+            
+            .section--page {
+                padding: 1.5em 0;
+            }
+
+            #wrapper--hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5em;
+            }
+
+            #profile-pic {
+                width: 140px;
+                height: 140px;
+            }
+
+            .project-showcase {
+                grid-template-columns: 1fr;
+            }
+            
+            #theme-switcher {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .graphic-element {
+                display: none;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .figma-embed {
+                height: 300px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="graphic-element circle-element floating"></div>
+    <div class="graphic-element square-element floating" style="animation-delay: 2.5s;"></div>
+    
+    <div id="container--main">
+        <section id="wrapper--hero" class="section--page">
+            <div class="profile-decoration"></div>
+            <img id="profile-pic" src="rishikesh.jpg" alt="Rishikesh R">
+
+            <div>
+                <h1 id="user-name">Rishikesh R</h1>  
+                <p id="bio">Aspiring Digital Designer | BSc Computer Technology, <a href="https://www.kgcas.com/" target="_blank">KGCAS</a></p>  
+                <p id="bio">"Passionate about Graphical designing, 3d animation & UI/UX Design" | Creating User-responsive interfaces </p>  
+                <p id="email"><i class="fas fa-envelope"></i> r.rishikesh1417@gmail.com</p>
+            </div>  
+        </section>
+
+        <section class="section--page">
+            <div id="socials--list">
+                <a href="https://github.com/Rishikesh-14" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/rishi-kesh-699b92285" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </section>
+
+        <section class="section--page">
+            <h2>Resume</h2>
+            <a href="./rishi_resume.pdf" download="rishi_resume.pdf" class="btn"><i class="fas fa-download"></i> Download Resume</a>
+        </section>
+
+        <section class="section--page">
+            <h2>Skills & Qualifications</h2>
+            <ul class="skills-list">
+                <li>Front-end Development Basics</li>
+                <li>Wireframing and prototyping</li>
+                <li>Blender Basics</li>
+                <li>UI/UX Design principles</li>
+                <li>Graphic design and digital art creation</li>
+            </ul>
+        </section>
+
+        <section class="section--page">
+            <h2>Technical Skills</h2>
+            <div id="wrapper--techstack__items">        
+                <div class="card--techstack"><span>Figma, Adobe XD</span></div>
+                <div class="card--techstack"><span>HTML, CSS </span></div>
+                <div class="card--techstack"><span>Adobe Creative Suite</span></div>
+                <div class="card--techstack"><span>UI/UX Design Principles</span></div>
+            </div>
+        </section>
+
+        <section class="section--page">
+            <h2>Education</h2>
+            <div class="education-card">
+                <h3>🎓 BSc Computer Technology | KG College of Arts and Science</h3>
+                <p>2023 - Present | Coimbatore, India</p>
+                <p>Courses: Networking Fundamentals, Network Security, Operating Systems, Digital Design</p>
+            </div>
+            <div class="education-card">
+                <h3>🏫 Higher Secondary Education | Kongu Vellalar Matric Higher Secondary School</h3>
+                <p>2021 - 2023 | Coimbatore, India</p>
+                <p>Percentage: 89%</p>
+            </div>
+        </section>
+
+        <section class="section--page">
+            <h2>Projects</h2>
+            <div class="project-showcase">
+                <div class="project-slide">
+                    <h3 class="project-title">🌿 Cropify</h3>
+                    <p>A mobile application to detect plant diseases just by scan through the camera</p>
+                    
+                    <h4>Features:</h4>
+                    <ul class="project-features">
+                        <li>Detects the name of the disease</li>
+                        <li>Provide remedy to cure it</li>
+                        <li>Multiple language support for easy understanding</li>
+                        <li>Clarify doubts with the help of Ai Chatbot</li>
+                    </ul>
+                    
+                    <div class="project-buttons">
+                        <a href="#" class="btn" id="view-design-btn"><i class="fas fa-palette"></i> View Design</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Figma Embed Section (initially hidden) -->
+            <div id="figma-embed-container" style="display: none; margin-top: 30px;">
+                <div class="figma-embed">
+                    <iframe style="border: 1px solid rgb(252, 252, 252);" width="800" height="450"  src="https://embed.figma.com/proto/FBgeexuaulP9ZGPI969bx7/Untitled?page-id=0%3A1&node-id=41-130&starting-point-node-id=24%3A195&embed-host=share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="section--page">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <p>Email</p>
+                        <p>r.rishikesh1417@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <p>Phone</p>
+                        <p>+91 93449 76326</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <p>Location</p>
+                        <p>Tiruppur, India</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="copyright">
+            &copy; 2025 Rishikesh R. All rights reserved. | Designed with ♥
+        </div>
+    </div>
+    
+    <div id="theme-switcher">
+        <div class="theme" id="theme-light" data-theme="light" title="Light Mode"></div>
+        <div class="theme" id="theme-dark" data-theme="dark" title="Dark Mode"></div>
+    </div>
+
+    <script>
+        // Theme Switcher
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeLight = document.getElementById('theme-light');
+            const themeDark = document.getElementById('theme-dark');
+            
+            // Set initial theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            // Theme switcher functionality
+            themeLight.addEventListener('click', () => {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            });
+            
+            themeDark.addEventListener('click', () => {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            });
+            
+            // View Design Button Functionality
+            const viewDesignBtn = document.getElementById('view-design-btn');
+            const figmaEmbedContainer = document.getElementById('figma-embed-container');
+            
+            viewDesignBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (figmaEmbedContainer.style.display === 'none') {
+                    figmaEmbedContainer.style.display = 'block';
+                    viewDesignBtn.innerHTML = '<i class="fas fa-times"></i> Hide Design';
+                    // Scroll to the design
+                    figmaEmbedContainer.scrollIntoView({behavior: 'smooth'});
+                } else {
+                    figmaEmbedContainer.style.display = 'none';
+                    viewDesignBtn.innerHTML = '<i class="fas fa-palette"></i> View Design';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
